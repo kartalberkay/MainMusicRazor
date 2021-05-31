@@ -1,0 +1,56 @@
+﻿@page
+@model MusicStoreRazor.UI.Pages.MusicList.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<h2>Create New Music</h2>
+<br />
+
+<div class="border container">
+    <form method="post">
+        <br />
+        <div class="form-group row">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="col-3">
+                <label asp-for="Music.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Music.Name" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Music.Name"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Music.Author"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Music.Author" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Music.Author"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Music.BarcodeNumber"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Music.BarcodeNumber" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Music.BarcodeNumber"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Create" class="btn btn-primary form-control"/>
+            </div>
+            <div class="col-3 ">
+                <a asp-page="Index" class="btn btn-success form-control">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial  name="_ValidationScriptsPartial"/>
+ }

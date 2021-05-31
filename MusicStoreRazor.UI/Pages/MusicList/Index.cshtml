@@ -1,0 +1,58 @@
+﻿@page
+@model MusicStoreRazor.UI.Pages.MusicList.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Music List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create To Music</a>
+    </div>
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.Musics.Count() > 0)
+            {
+                <table class="table table-striped border" >
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Musics.FirstOrDefault().Name"></label>
+                        </th>
+                        <th>
+                            @*<label asp-for="Musics.FirstOrDefault().Name"></label>*@
+                            @Html.DisplayNameFor(x => x.Musics.FirstOrDefault().Author)
+                        </th>
+                        <th>
+                            @*<label asp-for="Musics.FirstOrDefault().Name"></label>*@
+                            @Html.DisplayNameFor(x => x.Musics.FirstOrDefault().BarcodeNumber)
+                        </th>
+                        <th>
+                            <label>operations</label>
+                        </th>
+                    </tr>
+                    @foreach (var mus in Model.Musics)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(x => mus.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => mus.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => mus.BarcodeNumber)
+                    </td>
+                    <td>
+                        <button asp-page-handler="Delete" asp-route-id="@mus.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure ?')">Delete</button>
+                        <a class="btn btn-success btn-sm text-white" asp-page="Edit" asp-route-id="@mus.Id">Edit</a>
+                    </td>
+                </tr>
+                    }
+                </table>
+            }
+        </form>
+    </div>
+</div>
