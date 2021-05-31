@@ -1,5 +1,2 @@
 # MainMusicRazor
-
-test
-
-test 2
+Razor ile CRUD işlemleri
